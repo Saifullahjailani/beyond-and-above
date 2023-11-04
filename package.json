@@ -20,6 +20,7 @@
     "gatsby": "^5.12.4",
     "gatsby-image": "^3.11.0",
     "gatsby-plugin-image": "^3.12.3",
+    "gatsby-plugin-netlify": "^5.1.1",
     "gatsby-plugin-sass": "^6.12.3",
     "gatsby-plugin-sharp": "^5.12.3",
     "gatsby-plugin-styled-components": "^6.12.0",
