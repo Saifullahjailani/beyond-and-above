@@ -32,13 +32,6 @@ const config: GatsbyConfig = {
                   path: `${__dirname}/src/assets/markdown`,
                 },
               },
-              {
-                resolve: `gatsby-source-filesystem`,
-                options: {
-                  name: `images`,
-                  path: `${__dirname}/src/assets/images`,
-                },
-              }
             ]
 };
 
