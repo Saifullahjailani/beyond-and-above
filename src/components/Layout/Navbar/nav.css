@@ -1,0 +1,38 @@
+.fixed-div{
+    position: sticky;
+    height: 80px;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+
+
+.nav-link{
+    color: #fff !important;
+    display: flex !important;
+    align-items: center !important;
+    text-decoration: none !important;
+    padding: 0 1rem !important;
+  
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+}
+
+.nav-link:hover{
+    transform: scale(1.1) translate(0, 2px) !important;
+}
+
+.active-link{
+
+    transform: scale(1.3) translate(0, 2px) !important;
+
+}
+
+@media screen and (max-width: 768px){
+    .active-link{
+
+        transform: none !important;
+    
+    }
+}

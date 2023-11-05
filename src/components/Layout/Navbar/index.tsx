@@ -1,8 +1,12 @@
-import { Link } from 'gatsby';
+
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components';
 import {FaBars} from "react-icons/fa";
 import { Button } from '../../Button';
+import "./nav.css"
+import { Link } from 'gatsby';
+import NavLink from './NavLink';
+
 
 const Navbar = ({isMain}:{isMain: boolean}) => {
   const [color, setColor] = useState(false);
@@ -64,20 +68,6 @@ background: ${props => props.backgroundcolor || "transparent"};
   position: relative;
 `
 
-const NavLink = styled(Link)`
-  color: #fff;
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  padding: 0 1rem;
-  height 100%;
-  cursor: pointer;
-  transition: all 0.3s ease;
-
-  &:hover{
-    transform: scale(1.1) translate(0, 2px);
-  }
-`
 
 const Bars = styled(FaBars)`
 display: none;
@@ -96,7 +86,7 @@ color: #fff;
 
 const NavMenu = styled.div`
   display: flex;
-  align-item: center;
+  align-items: center;
   margin-right: -48px;
 
   @media screen and (max-width: 768px){
@@ -121,7 +111,8 @@ export interface MenuItem {
 }
 
 export const menuData: MenuItem[] = [
-  {title: "About", link: "/about"},
-  {title: "Curriculums", link: "/curriculums"},
-  {title: "Contact", link: "/contacts"},
+  {title: "Home", link: "/"},
+  {title: "About", link: "/about/"},
+  {title: "Curriculums", link: "/curriculums/"},
+  {title: "Contact", link: "/contacts/"},
 ] 

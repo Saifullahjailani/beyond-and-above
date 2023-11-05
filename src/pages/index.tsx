@@ -3,14 +3,15 @@ import type { HeadFC, PageProps } from "gatsby"
 import DefaultLayout from "../components/Layout/DefaultLayout"
 import Hero from "../components/Hero"
 import Curriculums from "../components/Curriculums"
-import ContactForm from "../components/ContactForm"
+import ContactsComp from "../components/ContactsComp"
+
 
 const IndexPage: React.FC<PageProps> = () => {
   return (
     <DefaultLayout>
       <Hero></Hero>
       <Curriculums></Curriculums>
-      <ContactForm></ContactForm>
+      <ContactsComp></ContactsComp>
     </DefaultLayout>
   )
 }
