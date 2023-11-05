@@ -10,6 +10,11 @@ import NavLink from './NavLink';
 
 const Navbar = ({isMain}:{isMain: boolean}) => {
   const [color, setColor] = useState(false);
+  const [mobileMode, setMobileMode] = useState(false);
+  const toggle = () => {
+    console.log("clicked");
+    setMobileMode(!mobileMode);
+  }
   const handleColor = () => {
     if(window.scrollY > 80){
       setColor(true);
@@ -29,23 +34,54 @@ const Navbar = ({isMain}:{isMain: boolean}) => {
 
   return (
     <FixedDiv>
+      
     <Nav backgroundcolor={(color || isMain) ? "#282d32" : "transparent"}>
+    
       <NavLink to="/" >Above&Beyond</NavLink>
-      <Bars></Bars>
+      <Bars onClick={()=>{setMobileMode(!mobileMode)}}></Bars>
       <NavMenu>
-        {menuData.map((item : MenuItem, index) => (
-          <NavLink to={item.link} key={index}>{item.title}</NavLink>
+        {menuData.map((item : MenuItem) => (
+          <NavLink to={item.link} key={item.link}>{item.title}</NavLink>
         ))}
       </NavMenu>
           <NavBtn>
-            <Button to="/#curriculums" primary="true" round="true">Explore Curriculums</Button>
+            <Button to="/contacts/#contact_form" primary="true" round="true">Contact Us</Button>
           </NavBtn>
     </Nav>
+    <BurgerMenu activate={mobileMode} dispatch={toggle} />
     </FixedDiv>
   )
 }
 
 export default Navbar;
+
+
+function BurgerMenu({activate, dispatch}: {activate?: boolean, dispatch?: ()=> void}) {
+
+  return <MenuPhone style={{left: activate ? "0" : "-150vw"}}>
+    {menuData.map((item : MenuItem, index) => (
+          
+            <NavLink handler={dispatch} to={item.link} key={item.link}>{item.title}</NavLink>
+          
+          
+        ))}
+        <Button onClick={(e) => {if(dispatch){dispatch()}}} to="/contacts/#contact_form" primary="true" round="true">Contact Us</Button>
+  </MenuPhone>
+}
+
+const MenuPhone = styled.div`
+  background-color: #282d32;
+  height: 100vh;
+  width: 100vw;
+  top: 0px;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 120px;
+  row-gap: 20px;
+  transition: transform 0.5s ease;
+`
 
 const FixedDiv = styled.div`
   position: sticky;

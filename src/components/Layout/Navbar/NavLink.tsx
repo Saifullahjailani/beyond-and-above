@@ -3,8 +3,8 @@ import React, { ReactNode, useEffect, useState } from 'react'
 import "./nav.css";
 import { useLocation } from '@reach/router';
 
-
-const NavLink = ({to, children}:{to:string, children:ReactNode}) => {    
+type MyFunctionType = () => void;
+const NavLink = ({to, children, handler}:{to:string, children:ReactNode, handler?: MyFunctionType}) => {    
     const [isActive, setActive] = useState(false);
     const location = useLocation();
 
@@ -22,7 +22,14 @@ const NavLink = ({to, children}:{to:string, children:ReactNode}) => {
     }, [location.pathname]);
     
     return (
-    <Link className={isActive ? "nav-link active-link" : "nav-link"}  to={to}>{children}</Link>
+    <Link onClick={(e) => {
+      if(handler){
+        handler();
+      }
+    }
+      
+    
+    } className={isActive ? "nav-link active-link" : "nav-link"}  to={to}>{children}</Link>
   )
 }
 
